@@ -1,0 +1,49 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: rgb(128, 128, 128, 0.1)
+}
+
+.buttons{
+    margin-top:1%
+}
+.btn{
+    width:15%
+}
+.table{
+    background-color:white;
+    height:400px;
+}
+.form {
+    background-color: rgb(128, 128, 128, 0.1);
+    padding:1%
+}
+p{
+    font-weight:500;
+}
+.btn-success {
+    background-color: lightseagreen;
+    border-color: lightseagreen;
+}
+
+
+
+
+
+
+
+

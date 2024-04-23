@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerminalMVC", "WebApplication1\TerminalMVC.csproj", "{316050E8-B487-4119-9DD8-AFC0DDC544FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataApiService", "DataApiService\DataApiService.csproj", "{67D413BD-1934-4288-91D2-DC2B7C3AE9BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{316050E8-B487-4119-9DD8-AFC0DDC544FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316050E8-B487-4119-9DD8-AFC0DDC544FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316050E8-B487-4119-9DD8-AFC0DDC544FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316050E8-B487-4119-9DD8-AFC0DDC544FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D413BD-1934-4288-91D2-DC2B7C3AE9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D413BD-1934-4288-91D2-DC2B7C3AE9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D413BD-1934-4288-91D2-DC2B7C3AE9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D413BD-1934-4288-91D2-DC2B7C3AE9BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2EE4912-AC46-4256-A54A-64C5B0353CB8}
+	EndGlobalSection
+EndGlobal

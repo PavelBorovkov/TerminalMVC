@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<TerminalMVC.Models.CommandTypesViewModel>
+
+    <div class="form-inline form-group">
+        <div class="row">
+            <div class="col">
+            <p id="parameter_name1">@Model.FirstOrDefault(x=>x.Id==2).Name</p>
+                <input name="parameter_value1" class="form-control" />
+            </div>
+
+            <div class="col">
+                <p>Параметр 2</p>
+                <input name="parameter_value2" class="form-control" />
+            </div>
+
+            <div class="col">
+                <p>Параметр 3</p>
+                <input name="parameter_value3" class="form-control" />
+            </div>
+            <div class="text-center buttons">
+                <input type="submit" value="Назад" class="btn btn-secondary disabled" />
+                <input type="submit" value="Отправить" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,63 @@
+﻿@model TerminalMVC.Models.CommandTypesResponse
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<body>
+    <p>Отправка команды на терминал</p>
+    <form method="post" class="form" asp-controller="Home">
+        <div class="row">
+            <div class="col">
+                <p>ID Терминала(ов)</p>
+                <input name="id" class="form-control" />
+            </div>
+            <div class="col">
+               <p>Команда</p>
+                <select id="commandId" ng-model="selectItem" class="form-select" aria-label="Default select example">
+                    @foreach(var item in Model.Items)
+                    {
+                        <option value="@item.Id" id="command" >@item.Name</option>
+
+                    }
+                    
+                </select>
+            </div>
+        </div>
+        <div>
+            @await Html.PartialAsync("ParametersPartialView", Model.Items)
+        </div>
+
+
+        @*<div class="form-inline form-group">
+            <div class="row">
+                <div class="col">
+                    <p id="parameter_name1"></p>
+                    <input name="parameter_value1" class="form-control" />
+                </div>
+
+                <div class="col">
+                    <p>Параметр 2</p>
+                    <input name="parameter_value2" class="form-control" />
+                </div>
+
+                <div class="col">
+                    <p>Параметр 3</p>
+                    <input name="parameter_value3" class="form-control" />
+                </div>
+                <div class="text-center buttons" >
+                    <input type="submit" value="Назад" class="btn btn-secondary disabled" />
+                    <input type="submit" value="Отправить" class="btn btn-success" />
+                </div>
+            </div>
+        </div>*@
+    </form>
+   
+    <script src="~/js/site.js"></script>
+    
+    
+</body>
+
+
