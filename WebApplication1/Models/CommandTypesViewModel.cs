@@ -85,6 +85,12 @@ namespace TerminalMVC.Models
         public bool Visible { get; set; }
     }
 
+    public class ConcreteCommand
+    {
+        public Task<CommandTypesResponse> commandTypeResponse { get; set; }
+        public int CommandId { get; set; }
+    }
+
     public class CommandTypesResponse
     {
         [JsonPropertyName("page_number")]

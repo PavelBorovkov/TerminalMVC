@@ -24,18 +24,28 @@
 //}
 
 
-$(function () {
+
+
+
+
+/*$(function () {*/
     $('select').on('change', function (e) {
-        let ControllerId = 1;
+        let ControllerId = $("#commandId").val();
         $.ajax({
             type: 'GET',
-            url: '/Home/GetParameters',
+            url: '/Home/ParametersPartialView',
             data: { "ControllerId": ControllerId },
             success: function (response) {
-                
-               //сюда вставляем код  с разметкой
+                /*$("#block1").load("Home/ParametersPartialView");*/
+                //сюда вставляем код  с разметкой
+                /*$("#block1").text(response)*/
+                $("#block1").html($(response))
+               /* $("#block1").append(response)*/
+                alert(ControllerId)
+                    
             },
             failure: function () {
+                alert("failure");
                 modal.modal('hide')
             },
             error: function (response) {
@@ -44,9 +54,9 @@ $(function () {
         });
 
     });
-
-    $('select').change();
-});
+    /*alert("запрос выполнен")*/
+    //$('select').change();
+/*});*/
 
 
 //function c() {

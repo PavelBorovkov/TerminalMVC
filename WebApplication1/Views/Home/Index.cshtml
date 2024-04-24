@@ -26,8 +26,13 @@
                 </select>
             </div>
         </div>
-        <div>
-            @await Html.PartialAsync("ParametersPartialView", Model.Items)
+        <div id="block1">
+            @*@ViewBag.Name*@
+            @*@await Html.PartialAsync("ParametersPartialView")*@
+        </div>
+        <div class="text-center buttons">
+            <input type="submit" value="Назад" class="btn btn-secondary disabled" />
+            <input type="submit" value="Отправить" class="btn btn-success" />
         </div>
 
 

@@ -113,17 +113,18 @@ namespace DataApiService
         }
 
 
-        //public async Task<IEnumerable<T>> GetCommands<T>(Dictionary<string, string> getParams = null)
+        //public async Task<T> GetCommandItems<T>(string pointName, Dictionary<string, string> getParams = null)
         //{
         //    try
         //    {
+        //        string urlService = _options.GetUrlApiService(pointName);
         //        var paramString = getParams.ToGetParameters();
 
-        //        var url = new Uri($"{_options.BaseUrl}/commands/types{paramString}");
+        //        var url = new Uri($"{urlService}{paramString}");
 
         //        var responseData = await _client.DownloadDataTaskAsync(url);
         //        var jsonStr = System.Text.Encoding.UTF8.GetString(responseData);
-        //        var result = JsonSerializer.Deserialize<IEnumerable<T>>(jsonStr);
+        //        var result = JsonConvert.DeserializeObject<T>(jsonStr);
         //        return result;
         //    }
         //    catch (Exception)

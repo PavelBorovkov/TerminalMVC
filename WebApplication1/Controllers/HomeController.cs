@@ -4,6 +4,7 @@ using WebApplication1.Models;
 using DataApiService;
 using DataApiService.Models;
 using TerminalMVC.Models;
+using System.Reflection;
 
 namespace WebApplication1.Controllers
 {
@@ -23,16 +24,32 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> Index()
         {
             var model = await _dataManager.GetItems<CommandTypesResponse>("commands/types");
-
+            
 
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult GetParameters(int ControllerId)
+       
+
+        
+        public async Task<IActionResult> ParametersPartialView(int ControllerId)
         {
 
-            return View("ParametersPartialView", ControllerId);
+            var models = await  _dataManager.GetItems<CommandTypesResponse>("commands/types");
+            //ConcreteCommand concreteCommand=new ConcreteCommand();
+            //concreteCommand.commandTypeResponse = models;
+            //concreteCommand.CommandId = ControllerId;
+            ViewBag.Name = models.Items.First(x=>x.Id==ControllerId).Name;
+            ViewBag.parameter_name1=models.Items.First(x => x.Id == ControllerId).Parameter_name1;
+            ViewBag.parameter_name2 = models.Items.First(x => x.Id == ControllerId).Parameter_name2;
+            ViewBag.parameter_name3 = models.Items.First(x => x.Id == ControllerId).Parameter_name3;
+            ViewBag.parameter_default_value1 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
+            ViewBag.parameter_default_value2 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
+            ViewBag.parameter_default_value3 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value3;
+            /*CommandTypesViewModel model = models.Items.FirstOrDefault(x => x.Id == ControllerId)*/ /*models.Result.Items.First(x => x.Id == ControllerId)*/
+            
+            //var model = ControllerId;
+            return View();
         }
 
 
