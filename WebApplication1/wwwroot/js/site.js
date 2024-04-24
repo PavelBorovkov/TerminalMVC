@@ -10,12 +10,28 @@
 
 
 
-//const select = document.querySelector('select');
+const select = document.querySelector('select');
 
-//select.onchange = function () {
-//    let item = select.value;
-//    return item;
-//}
+select.onchange = function () {
+    let ControllerId = $("#commandId").val();
+    $.ajax({
+        type: 'GET',
+        url: '/Home/ParametersPartialView',
+        data: { "ControllerId": ControllerId },
+        success: function (response) {
+            //сюда вставляем код  с разметкой
+            $("#block1").html($(response))
+            /*alert(ControllerId)*/
+        },
+        failure: function () {
+            alert("failure");
+            modal.modal('hide')
+        },
+        error: function (response) {
+            alert("ошибка");
+        }
+    });
+}
 
 
 //function myFunction() {
@@ -28,35 +44,35 @@
 
 
 
-/*$(function () {*/
-    $('select').on('change', function (e) {
-        let ControllerId = $("#commandId").val();
-        $.ajax({
-            type: 'GET',
-            url: '/Home/ParametersPartialView',
-            data: { "ControllerId": ControllerId },
-            success: function (response) {
-                /*$("#block1").load("Home/ParametersPartialView");*/
-                //сюда вставляем код  с разметкой
-                /*$("#block1").text(response)*/
-                $("#block1").html($(response))
-               /* $("#block1").append(response)*/
-                alert(ControllerId)
-                    
-            },
-            failure: function () {
-                alert("failure");
-                modal.modal('hide')
-            },
-            error: function (response) {
-                alert("ошибка");
-            }
-        });
+///*$(function () {*/
+//    $('select').on('change', function (e) {
+//        let ControllerId = $("#commandId").val();
+//        $.ajax({
+//            type: 'GET',
+//            url: '/Home/ParametersPartialView',
+//            data: { "ControllerId": ControllerId },
+//            success: function (response) {
+//                /*$("#block1").load("Home/ParametersPartialView");*/
+//                //сюда вставляем код  с разметкой
+//                /*$("#block1").text(response)*/
+//                $("#block1").html($(response))
+//               /* $("#block1").append(response)*/
+//                /*alert(ControllerId)*/
+//            },
+//            failure: function () {
+//                alert("failure");
+//                modal.modal('hide')
+//            },
+//            error: function (response) {
+//                alert("ошибка");
+//                modal.modal('hide')
+//            }
+//        });
 
-    });
-    /*alert("запрос выполнен")*/
-    //$('select').change();
-/*});*/
+//    });
+//    /*alert("запрос выполнен")*/
+//    //$('select').change();
+///*});*/
 
 
 //function c() {
