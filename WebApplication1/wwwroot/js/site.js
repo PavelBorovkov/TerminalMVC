@@ -20,7 +20,7 @@ select.onchange = function () {
         data: { "ControllerId": ControllerId },
         success: function (response) {
             //сюда вставляем код  с разметкой
-            $("#block1").html($(response))
+            $("#parameters").html($(response))
             /*alert(ControllerId)*/
         },
         failure: function () {

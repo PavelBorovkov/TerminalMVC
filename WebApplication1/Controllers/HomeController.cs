@@ -29,27 +29,53 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
-       
 
-        
+
+
         public async Task<IActionResult> ParametersPartialView(int ControllerId)
         {
 
-            var models = await  _dataManager.GetItems<CommandTypesResponse>("commands/types");
-            //ConcreteCommand concreteCommand=new ConcreteCommand();
-            //concreteCommand.commandTypeResponse = models;
-            //concreteCommand.CommandId = ControllerId;
-            ViewBag.Name = models.Items.First(x=>x.Id==ControllerId).Name;
-            ViewBag.parameter_name1=models.Items.First(x => x.Id == ControllerId).Parameter_name1;
-            ViewBag.parameter_name2 = models.Items.First(x => x.Id == ControllerId).Parameter_name2;
-            ViewBag.parameter_name3 = models.Items.First(x => x.Id == ControllerId).Parameter_name3;
-            ViewBag.parameter_default_value1 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
-            ViewBag.parameter_default_value2 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
-            ViewBag.parameter_default_value3 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value3;
-            /*CommandTypesViewModel model = models.Items.FirstOrDefault(x => x.Id == ControllerId)*/ /*models.Result.Items.First(x => x.Id == ControllerId)*/
+            var models = await _dataManager.GetItems<CommandTypesResponse>("commands/types");
+
+            if (!string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name1) &&
+                !string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name2) &&
+                !string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name3))
+            {
+                ViewBag.Name = models.Items.First(x => x.Id == ControllerId).Name;
+                ViewBag.parameter_name1 = models.Items.First(x => x.Id == ControllerId).Parameter_name1;
+                ViewBag.parameter_name2 = models.Items.First(x => x.Id == ControllerId).Parameter_name2;
+                ViewBag.parameter_name3 = models.Items.First(x => x.Id == ControllerId).Parameter_name3;
+                ViewBag.parameter_default_value1 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
+                ViewBag.parameter_default_value2 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
+                ViewBag.parameter_default_value3 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value3;
+
+                return View("ThreeParametersPartialView");
+            }
+
+            else if (!string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name1) &&
+                !string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name2))
+            {
+                ViewBag.Name = models.Items.First(x => x.Id == ControllerId).Name;
+                ViewBag.parameter_name1 = models.Items.First(x => x.Id == ControllerId).Parameter_name1;
+                ViewBag.parameter_name2 = models.Items.First(x => x.Id == ControllerId).Parameter_name2;
+                ViewBag.parameter_default_value1 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
+                ViewBag.parameter_default_value2 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
+
+                return View("TwoParametersPartialView");
+            }
+            else if (!string.IsNullOrEmpty(models.Items.First(x => x.Id == ControllerId).Parameter_name1))
+            {
+                ViewBag.Name = models.Items.First(x => x.Id == ControllerId).Name;
+                ViewBag.parameter_name1 = models.Items.First(x => x.Id == ControllerId).Parameter_name1;
+                ViewBag.parameter_default_value1 = models.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
+
+                return View("OnceParametersPartialView");
+            }
+            else
+            {
+                return  View("ZeroParametersPartialView");
+            }
             
-            //var model = ControllerId;
-            return View();
         }
 
 
