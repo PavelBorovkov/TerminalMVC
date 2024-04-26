@@ -87,7 +87,6 @@ namespace WebApplication1.Controllers
         {
             var model = await _dataManager.GetPostItems<TerminalResponse>($"terminals/{terminalId}/commands", GetParams);
             var model2 = await _dataManager.GetItems<CommandTypesResponse>("commands/types");
-
             ViewBag.commandName=model2.Items.First(x => x.Id==model.item.Command_id).Name;
             ViewBag.state = model.item.State_name;
             ViewBag.date = model.item.Time_created;
@@ -95,7 +94,7 @@ namespace WebApplication1.Controllers
             ViewBag.parameter2 = model.item.Parameter2;
             ViewBag.parameter3 = model.item.Parameter3;
 
-            return View("HistoryPartialView");
+            return PartialView("HistoryPartialView");
         }
 
         public IActionResult Privacy()

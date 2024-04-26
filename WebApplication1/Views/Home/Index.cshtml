@@ -12,8 +12,7 @@
         <div class="row">
             <div class="col">
                 <p>ID Терминала(ов)</p>
-                <textarea id="id" class="idTerminal form-control"></textarea>@*
-                <input type="text" name="id" class="form-control idTerminal" />*@
+                <textarea id="id" class="idTerminal form-control"></textarea>
             </div>
             <div class="col">
                <p>Команда</p>
@@ -22,7 +21,7 @@
                     <option disabled selected hidden>Выберите команду</option>
                     @foreach(var item in Model.Items)
                     {
-                        <option value="@item.Id" id="command" >@item.Name</option>
+                        <option value="@item.Id" id="command"  >@item.Name</option>
 
                     }
                     
@@ -51,15 +50,6 @@
             </tr>
         </thead>
         <tbody id ="History">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Время</th>
-                <th scope="col">Команда</th>
-                <th scope="col">Параметр 1</th>
-                <th scope="col">Параметр 2</th>
-                <th scope="col">Параметр 3</th>
-                <th scope="col">Статус</th>
-            </tr>
             
         </tbody>
     </table>

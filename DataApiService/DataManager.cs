@@ -15,10 +15,7 @@ namespace DataApiService
     public interface IDataManager
     {
         Task<T> GetItems<T>(string pointName, Dictionary<string, string> getParams = null);
-        //Task<IEnumerable<T>> GetCommands<T>(Dictionary<string, string> getParams = null);
         Task<T> GetPostItems<T>(string pointName, Dictionary<string, string> getParams);
-
-        string Request(string pointName);
         void Auth(string login, string password);
     }
 
@@ -138,22 +135,6 @@ namespace DataApiService
                     throw;
                 }
             }
-        }
-
-        public string Request(string pointName)
-        {
-            try
-            {
-                string urlService = _options.GetUrlApiService(pointName);
-
-                return urlService;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
         }
     }
 }
