@@ -33,11 +33,68 @@ select.onchange = function () {
     });
 }
 
+var a = 1;
+function myFunction() {
+    //var table = document.getElementById('History');
+    //var newRow = document.createElement("tr");
+    //var addTh = document.createElement("th");
+    //addTh.innerHTML = a;
 
-//function myFunction() {
-//    var x = document.getElementById("command").innerHTML;
-//    document.getElementById("parameter_name1").innerHTML = x.val();
-//}
+    //newRow.appendChild(addTh);
+
+    let terminalId = document.getElementById('id').value
+    let p1,p2,p3
+    if (document.getElementById('parameter_value1') == null) {
+        p1 = 0;
+    }
+    else
+        p1 = document.getElementById('parameter_value1').value;
+    if (document.getElementById('parameter_value2') == null) {
+        p2 = 0;
+    }
+    else
+        p3 = document.getElementById('parameter_value2').value;
+    if (document.getElementById('parameter_value3') == null) {
+        p3 = 0;
+    }
+    else
+        p3 = document.getElementById('parameter_value3').value;
+    var myDictionary = {
+        command_id: $("#commandId").val(),
+        parameter1: p1,
+        parameter2: p2,
+        parameter3: p3
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/Home/TerminalResponse',
+        data: {
+            "GetParams": myDictionary,
+            "terminalId": terminalId
+        },
+        success: function (response) {
+            //сюда вставляем код  с разметкой
+            $("#History").append(response);
+            /*alert(document.getElementById('opaa'));*/
+            /* addTr.innerHTML(response);*/
+            /*addTr.appendChild.html(response)*/
+            /*document.getElementById('History').HTML(response)*/
+            /*addTr.appendChild.html(response)*/
+
+        },
+        failure: function () {
+            alert("failure");
+            modal.modal('hide')
+        },
+        error: function (response) {
+            console.error(xhr.responseText);
+            alert("ошибка");
+        }
+    });
+    /*table.appendChild(newRow);*/
+    a++;
+}
 
 
 

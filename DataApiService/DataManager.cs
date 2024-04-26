@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using DataApiService.Utils;
@@ -14,7 +16,9 @@ namespace DataApiService
     {
         Task<T> GetItems<T>(string pointName, Dictionary<string, string> getParams = null);
         //Task<IEnumerable<T>> GetCommands<T>(Dictionary<string, string> getParams = null);
+        Task<T> GetPostItems<T>(string pointName, Dictionary<string, string> getParams);
 
+        string Request(string pointName);
         void Auth(string login, string password);
     }
 
@@ -112,27 +116,44 @@ namespace DataApiService
 
         }
 
+        public async Task<T> GetPostItems<T>(string pointName, Dictionary<string, string> getParams)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string urlService = _options.GetUrlApiService(pointName);
+                    string paramString = JsonConvert.SerializeObject(getParams);
 
-        //public async Task<T> GetCommandItems<T>(string pointName, Dictionary<string, string> getParams = null)
-        //{
-        //    try
-        //    {
-        //        string urlService = _options.GetUrlApiService(pointName);
-        //        var paramString = getParams.ToGetParameters();
+                    var content = new StringContent(paramString, Encoding.UTF8, "application/json-patch+json");
 
-        //        var url = new Uri($"{urlService}{paramString}");
+                    var response = await client.PostAsync(urlService, content);
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<T>(responseContent);
+                    return result;
+                }
+                catch (Exception)
+                {
 
-        //        var responseData = await _client.DownloadDataTaskAsync(url);
-        //        var jsonStr = System.Text.Encoding.UTF8.GetString(responseData);
-        //        var result = JsonConvert.DeserializeObject<T>(jsonStr);
-        //        return result;
-        //    }
-        //    catch (Exception)
-        //    {
+                    throw;
+                }
+            }
+        }
 
-        //        throw;
-        //    }
+        public string Request(string pointName)
+        {
+            try
+            {
+                string urlService = _options.GetUrlApiService(pointName);
 
-        //}
+                return urlService;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }
