@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
                 ViewBag.parameter_default_value2 = model.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
                 ViewBag.parameter_default_value3 = model.Items.First(x => x.Id == ControllerId).Parameter_default_value3;
 
-                return View("ThreeParametersPartialView");
+                return PartialView("ThreeParametersPartialView");
             }
 
             else if (!string.IsNullOrEmpty(model.Items.First(x => x.Id == ControllerId).Parameter_name1) &&
@@ -64,7 +64,7 @@ namespace WebApplication1.Controllers
                 ViewBag.parameter_default_value1 = model.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
                 ViewBag.parameter_default_value2 = model.Items.First(x => x.Id == ControllerId).Parameter_default_value2;
 
-                return View("TwoParametersPartialView");
+                return PartialView("TwoParametersPartialView");
             }
             else if (!string.IsNullOrEmpty(model.Items.First(x => x.Id == ControllerId).Parameter_name1))
             {
@@ -72,11 +72,11 @@ namespace WebApplication1.Controllers
                 ViewBag.parameter_name1 = model.Items.First(x => x.Id == ControllerId).Parameter_name1;
                 ViewBag.parameter_default_value1 = model.Items.First(x => x.Id == ControllerId).Parameter_default_value1;
 
-                return View("OnceParametersPartialView");
+                return PartialView("OnceParametersPartialView");
             }
             else
             {
-                return  View("ZeroParametersPartialView");
+                return PartialView("ZeroParametersPartialView");
             }
             
         }

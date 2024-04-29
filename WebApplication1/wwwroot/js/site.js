@@ -58,6 +58,10 @@
             parameter3: p3
         };
 
+        var table = document.getElementById("History");
+        var newRow = table.insertRow(0);
+
+
         $.ajax({
             type: 'POST',
             url: '/Home/TerminalResponse',
@@ -66,7 +70,13 @@
                 "terminalId": terminalId
             },
             success: function (response) {
-                $("#History").append("<tr><th>" + a + "</th >" + response + "</tr>");
+                newRow.innerHTML =response;
+
+                var rows = table.getElementsByTagName("tr");
+
+                for (var i = 0; i < rows.length; i++) {
+                    table.rows[i].cells[0].textContent = i+1;
+                };
                 a++;
             },
             failure: function () {
